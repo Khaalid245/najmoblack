@@ -1,0 +1,37 @@
+{% extends 'auth/base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+<div style="margin: 20px auto; width: 80%;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="width: 100%;">
+
+            <div style="background-color: #d9edf7; padding: 10px; border: 1px solid #bce8f1; border-radius: 4px; margin-bottom: 20px;">
+                this is home page
+            </div>
+
+            {% if user.is_authenticated %} 
+            
+                <p style="font-size: 18px;">Hi {{ user.full_name }}, Welcome to My site!</p>
+                <a href="logout/" style="display: inline-block; padding: 10px 20px; background-color: #d9534f; color: white; text-decoration: none; border-radius: 4px; border: 1px solid #d43f3a; margin-top: 10px;">
+                    Logout
+                </a> 
+
+            {% else %}
+
+                <p style="font-size: 18px;">You are not logged in!</p>
+                <br>
+                <a href="{% url 'login' %}" style="display: inline-block; padding: 10px 20px; background-color: #337ab7; color: white; text-decoration: none; border-radius: 4px; border: 1px solid #2e6da4; margin-top: 10px;">
+                    Log In
+                </a>
+                <a href="{% url 'signup' %}" style="display: inline-block; padding: 10px 20px; background-color: #337ab7; color: white; text-decoration: none; border-radius: 4px; border: 1px solid #2e6da4; margin-top: 10px; margin-left: 10px;">
+                    Sign Up
+                </a>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
